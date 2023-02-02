@@ -5,7 +5,7 @@ function App() {
   const [currDisplay, setcurrDisplay] = useState<string>("0")
 
   useEffect(() => {
-     if (currDisplay.length === 2 && currDisplay[0] ==="0" && currDisplay[1] !== ".") {
+     if (currDisplay.length === 2 && currDisplay[0] ==="0" && currDisplay[1] !== "."&& currDisplay[1] !== "+"&& currDisplay[1] !== "-"&& currDisplay[1] !== "*"&& currDisplay[1] !== "/") {
       console.log(3 + 5 * 6 - 2 / 4);
       setcurrDisplay(currDisplay[1])
      }
