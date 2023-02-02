@@ -3,30 +3,37 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [currDisplay, setcurrDisplay] = useState<Number>(0)
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div id='calculator'>
+        <div id='display'>0</div>
+        <div id='buttons'>
+          <div id='numbers'>
+            <button className='0'>0</button>
+            <button className='1'>1</button>
+            <button className='2'>2</button>
+            <button className='3'>3</button>
+            <button className='4'>4</button>
+            <button className='5'>5</button>
+            <button className='6'>6</button>
+            <button className='7'>7</button>
+            <button className='8'>8</button>
+            <button className='9'>9</button>
+          </div>
+          <div id='operators'>
+            <button className='add'>+</button>
+            <button className='subtract'>-</button>
+            <button className='multiply'>*</button>
+            <button className='divide'>/</button>
+          </div>
+          <div id='other'>
+            <button className='equals'>=</button>
+            <button className='decimal'>.</button>
+            <button className='clear'>clear</button>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
