@@ -4,16 +4,36 @@ import { evaluate } from 'mathjs'
 
 function App() {
   const [currDisplay, setcurrDisplay] = useState<string>("0")
+  const regex = /^(\d+\.?\d*|\d*\.\d+)$/g;
 
   useEffect(() => {
     if (currDisplay.length === 2 && currDisplay[0] === "0" && currDisplay[1] !== "." && currDisplay[1] !== "+" && currDisplay[1] !== "-" && currDisplay[1] !== "*" && currDisplay[1] !== "/") {
       // console.log(3 + 5 * 6 - 2 / 4);
       setcurrDisplay(currDisplay[1])
     }
+    // if(currDisplay[currDisplay.length-1] === "." && currDisplay[currDisplay.length-2] === "."){
+    //   setcurrDisplay(currDisplay.slice(0,-1))
+    // }
+
+    // if (currDisplay.match(regex)) {
+    //   console.log("Valid number with at most one decimal point.");
+    // } else {
+    //   console.log("Invalid number.");
+    //          setcurrDisplay(currDisplay.slice(0,-1))
+    // }
+
   }, [currDisplay])
 
   function handleEquals(e: any) {
-    console.log();
+    const regex = /[-+*\/]{3,}/g
+    const match = currDisplay.match(regex)
+
+    if (regex.test(currDisplay)) {
+      const replacement = currDisplay.replace(regex,match[0][match[0].length-1])
+      const result = evaluate(replacement) 
+      console.log(replacement);    
+      return setcurrDisplay(result)
+    }
     const result = evaluate(currDisplay)     
       return setcurrDisplay(result)
   }
