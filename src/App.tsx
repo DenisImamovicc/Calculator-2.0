@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { evaluate } from 'mathjs'
 
 function App() {
   const [currDisplay, setcurrDisplay] = useState<string>("0")
@@ -13,8 +14,8 @@ function App() {
 
   function handleEquals(e: any) {
     console.log();
-    const result = eval?.(`"use strict";(${currDisplay})`)
-    return setcurrDisplay(result)
+    const result = evaluate(currDisplay)     
+      return setcurrDisplay(result)
   }
 
   return (
